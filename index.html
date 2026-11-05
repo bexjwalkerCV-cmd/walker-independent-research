@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Walker Independent Research</title>
+<meta name="description" content="Walker Independent Research: research, evaluation and policy work on migration, health, gender and rights across Southern and East Africa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap">
+<link rel="icon" href="logo.png">
+<style>
+/* Layout: white logo bar (the logo needs a white ground), a deep blue hero band, then one readable column of sections on a cool paper ground. */
+:root {
+  --bar: #ffffff;          /* logo bar, white in both themes */
+  --bar-text: #3d5470;
+  --navy: #0a2f57;         /* hero band */
+  --deep: #164f8f;         /* contact band */
+  --paper: #f2f7fd;        /* page, faint sky */
+  --band: #e1eefb;         /* alternate section bands */
+  --tint: #cfe3f8;         /* pills, tiles */
+  --surface: #ffffff;
+  --text: #102a47;         /* navy text */
+  --heading: #0a2f57;
+  --muted: #4c6582;
+  --rule: #c9dbef;
+  --brand: #358adf;        /* logo blue */
+  --brand-ink: #1c64b0;    /* logo blue, darkened for text on light */
+  --on-navy: #f3f7fc;
+  --on-navy-muted: #a9c3e0;
+  --on-navy-accent: #7fb8f0;
+  --font: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+  --s1: .875rem; --s2: 1rem; --s3: 1.125rem; --s5: clamp(1.7rem, 3.4vw, 2.125rem); --s6: clamp(2.3rem, 5.6vw, 3.6rem);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --navy: #0a2340; --deep: #123d6e; --paper: #0d1726; --band: #112036; --tint: #1a3352; --surface: #14243a; --text: #e2ecf7; --heading: #cfe3f8; --muted: #94adc9;
+    --rule: #22395a; --brand: #5ba2ea; --brand-ink: #82bbf2; --on-navy: #f3f7fc; --on-navy-muted: #a3bcd8; --on-navy-accent: #82bbf2;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --navy: #0a2340; --deep: #123d6e; --paper: #0d1726; --band: #112036; --tint: #1a3352; --surface: #14243a; --text: #e2ecf7; --heading: #cfe3f8; --muted: #94adc9;
+    --rule: #22395a; --brand: #5ba2ea; --brand-ink: #82bbf2; --on-navy: #f3f7fc; --on-navy-muted: #a3bcd8; --on-navy-accent: #82bbf2;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { background: var(--paper); color: var(--text); font-family: var(--font); font-size: var(--s2); line-height: 1.6; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bar); }
+a { color: var(--brand-ink); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 2px; }
+h1, h2, h3 { text-wrap: balance; line-height: 1.15; margin: 0; }
+p { margin: 0; }
+.wrap { max-width: 68rem; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+/* Logo bar + nav */
+.bar { background: var(--bar); position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; box-shadow: 0 1px 0 rgba(10,47,87,.12); }
+.bar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding-block: .5rem; }
+.bar img { height: 52px; width: auto; display: block; flex: none; }
+.bar nav { display: flex; gap: 1.25rem; overflow-x: auto; scrollbar-width: none; min-width: 0; }
+.bar nav a { color: var(--bar-text); text-decoration: none; font-size: var(--s1); font-weight: 600; white-space: nowrap; }
+.bar nav a:hover { color: #1c64b0; }
+
+/* Hero */
+.hero { background: linear-gradient(135deg, var(--navy) 0%, var(--deep) 100%); color: var(--on-navy); }
+.hero .wrap { padding-block: 3.5rem 3rem; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 2rem 3rem; align-items: center; }
+.hero-text { display: grid; gap: 1.5rem; min-width: 0; }
+.art { margin: 0; background: #d9e8f8; padding: .75rem; box-shadow: 0 18px 40px rgba(0,0,0,.28); }
+.art img { display: block; width: 100%; height: auto; mix-blend-mode: multiply; }
+.facts { grid-column: 1 / -1; }
+.hero .who { font-size: var(--s1); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--on-navy-accent); }
+.hero h1 { font-size: clamp(2.1rem, 4.6vw, 3.1rem); font-weight: 800; letter-spacing: -.02em; max-width: 18ch; }
+.lede { font-size: var(--s3); color: var(--on-navy-muted); max-width: 60ch; font-weight: 300; }
+.lede strong { color: var(--on-navy); font-weight: 500; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: 1.25rem 2rem; border-top: 1px solid rgba(255,255,255,.16); padding-top: 1.5rem; }
+.facts div { display: grid; gap: .1rem; }
+.facts b { font-size: 1.6rem; font-weight: 800; color: var(--on-navy-accent); font-variant-numeric: tabular-nums; line-height: 1.2; }
+.facts span { font-size: var(--s1); color: var(--on-navy-muted); }
+
+section { padding-block: 4rem; scroll-margin-top: 5rem; }
+.head { display: grid; gap: .6rem; margin-bottom: 2rem; max-width: 62ch; }
+.eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--brand-ink); }
+.head h2 { font-size: var(--s5); font-weight: 700; letter-spacing: -.01em; color: var(--heading); }
+#services, #clients, #background { background: var(--band); }
+.head p { color: var(--muted); }
+
+/* About */
+.about { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 3rem; align-items: start; }
+.about .body { display: grid; gap: 1rem; max-width: 64ch; }
+.about aside { border-left: 3px solid var(--brand); padding: .25rem 0 .25rem 1.25rem; }
+.about dl { margin: 0; display: grid; gap: 1.1rem; }
+.about dt { font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.about dd { margin: .2rem 0 0; }
+
+
+/* Creative methods */
+.creative { background: var(--navy); color: var(--on-navy); }
+.creative .head h2 { color: var(--on-navy); }
+.creative .eyebrow { color: var(--on-navy-accent); }
+.creative .grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 2.5rem; align-items: start; margin-top: 2.5rem; }
+.wide { margin: 0; }
+.wide img { display: block; width: 100%; height: auto; box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+.wide figcaption { font-size: var(--s1); color: var(--on-navy-muted); margin-top: .8rem; max-width: 70ch; }
+.creative .text { display: grid; gap: 1rem; color: var(--on-navy-muted); max-width: 52ch; }
+.creative .text strong { color: var(--on-navy); font-weight: 600; }
+.creative .links { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .5rem; }
+.creative .links a { color: var(--on-navy); border: 1px solid rgba(255,255,255,.3); border-radius: 999px; padding: .4rem .95rem; font-size: var(--s1); font-weight: 600; text-decoration: none; }
+.creative .links a:hover { background: rgba(255,255,255,.1); }
+.gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .5rem; margin: 0; }
+.gallery figure { margin: 0; aspect-ratio: 1; overflow: hidden; background: rgba(255,255,255,.06); }
+.gallery figure.big { grid-column: span 2; grid-row: span 2; }
+.gallery img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+.gallery figure:hover img { transform: scale(1.04); }
+@media (prefers-reduced-motion: reduce) { .gallery img { transition: none; } }
+.creative .credit { font-size: .8rem; color: var(--on-navy-muted); margin-top: .75rem; }
+
+/* Services + expertise */
+.services { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); column-gap: 2.5rem; border-top: 1px solid var(--rule); }
+.svc { padding-block: 1.4rem 1.5rem; border-bottom: 1px solid var(--rule); display: grid; gap: .45rem; align-content: start; }
+.svc h3 { font-size: var(--s3); font-weight: 700; color: var(--heading); }
+.svc p { color: var(--muted); font-size: .95rem; }
+.areas { display: flex; flex-wrap: wrap; gap: .6rem; padding: 0; margin: 0; }
+.areas li { list-style: none; background: var(--tint); color: var(--heading); border: 1px solid transparent; border-radius: 999px; padding: .45rem 1rem; font-size: .95rem; font-weight: 500; }
+
+/* Experience */
+.work { border-top: 1px solid var(--rule); }
+.job { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 1.5rem; padding-block: 1.35rem; border-bottom: 1px solid var(--rule); }
+.job .yr { font-variant-numeric: tabular-nums; color: var(--muted); font-size: var(--s1); font-weight: 600; padding-top: .2rem; }
+.job .for { color: var(--brand-ink); font-size: var(--s1); font-weight: 700; letter-spacing: .02em; }
+.job h3 { font-size: var(--s3); font-weight: 600; color: var(--heading); margin: .15rem 0 .3rem; }
+.job p { color: var(--muted); font-size: .95rem; max-width: 66ch; }
+
+/* Clients */
+.clients { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.clients div { background: var(--paper); color: var(--heading); padding: 1rem 1.15rem; font-weight: 600; font-size: .95rem; }
+.clients small { display: block; color: var(--muted); font-weight: 400; font-size: .82rem; margin-top: .1rem; }
+
+/* Publications */
+.tabs { display: flex; gap: .5rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+.tabs button { font: inherit; font-size: var(--s1); font-weight: 600; padding: .45rem 1rem; border-radius: 999px; border: 1px solid var(--rule); background: var(--surface); color: var(--text); cursor: pointer; }
+.tabs button[aria-selected="true"] { background: var(--brand-ink); border-color: var(--brand-ink); color: var(--surface); }
+.pubs { padding: 0; margin: 0; border-top: 1px solid var(--rule); }
+.pubs li { list-style: none; padding: .9rem 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 3.5rem minmax(0, 1fr); gap: 1rem; font-size: .95rem; }
+.pubs .y { font-variant-numeric: tabular-nums; color: var(--muted); font-weight: 600; font-size: var(--s1); padding-top: .1rem; }
+.pubs .t { font-weight: 600; color: var(--text); }
+.pubs .m { color: var(--muted); }
+.pubs a { font-size: var(--s1); font-weight: 600; white-space: nowrap; }
+.note { color: var(--muted); font-size: var(--s1); margin-top: 1rem; }
+
+/* Background */
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); gap: 2.5rem; }
+.cols h3 { font-size: var(--s1); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .75rem; }
+.list { padding: 0; margin: 0; display: grid; gap: .8rem; }
+.list li { list-style: none; display: grid; gap: .05rem; }
+.list b { font-weight: 600; }
+.list span { color: var(--muted); font-size: .92rem; }
+
+/* Contact */
+.contact { background: var(--deep); color: var(--on-navy); padding-block: 0; }
+.contact .wrap { padding-block: 3.5rem; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 2.5rem; align-items: center; }
+.contact h2 { font-size: var(--s5); font-weight: 700; margin-top: .6rem; }
+.contact .eyebrow { color: var(--on-navy-accent); }
+.contact p { color: var(--on-navy-muted); margin-top: .75rem; max-width: 52ch; }
+.card { border: 1px solid rgba(255,255,255,.2); padding: 1.5rem; }
+.card dl { margin: 0; display: grid; gap: 1rem; }
+.card dt { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--on-navy-muted); }
+.card dd { margin: .2rem 0 0; color: var(--on-navy); font-weight: 500; overflow-wrap: anywhere; display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+.card a { color: var(--on-navy); }
+.copy { font: inherit; font-size: .75rem; font-weight: 600; padding: .2rem .6rem; border: 1px solid rgba(255,255,255,.3); background: transparent; color: var(--on-navy); border-radius: 999px; cursor: pointer; }
+footer { background: var(--deep); color: var(--on-navy-muted); font-size: var(--s1); border-top: 1px solid rgba(255,255,255,.1); }
+footer .wrap { padding-block: 1.25rem; display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: space-between; }
+
+@media (max-width: 760px) {
+  section { padding-block: 3rem; }
+  .bar nav { display: none; }
+  .bar img { height: 44px; }
+  .hero .wrap { grid-template-columns: minmax(0, 1fr); }
+  .creative .grid { grid-template-columns: minmax(0, 1fr); }
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .art { max-width: 22rem; }
+  .about, .contact .wrap { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .job { grid-template-columns: minmax(0, 1fr); gap: .2rem; }
+  .pubs li { grid-template-columns: minmax(0, 1fr); gap: .1rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a href="#top" aria-label="Walker Independent Research, back to top"><img src="logo.png" alt="Walker Independent Research" width="402" height="175"></a>
+    <nav aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#creative">Creative methods</a>
+      <a href="#services">Services</a>
+      <a href="#experience">Experience</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-text">
+      <span class="who">Dr Rebecca Walker · Research &amp; Policy Consultant</span>
+    <h1>Research on migration, health and rights that reaches people who can act on it.</h1>
+    <p class="lede">I lead <strong>policy-relevant research, legal and policy analysis and programme evaluation</strong> across Southern and East Africa, for governments, UN agencies, international NGOs, funders and civil society networks.</p>
+    </div>
+    <figure class="art"><img src="drawing.jpg" alt="Pencil drawing of a woman carrying a bag, holding a small child's hand, walking towards tall buildings in Johannesburg" width="900" height="900"></figure>
+    <div class="facts">
+      <div><b>10+ years</b><span>leading research and consultancy projects</span></div>
+      <div><b>13 countries</b><span>of fieldwork and policy analysis in Africa</span></div>
+      <div><b>PhD</b><span>Social Anthropology, University of Edinburgh</span></div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <section id="about">
+    <div class="wrap">
+      <div class="about">
+        <div class="body">
+          <div class="head" style="margin-bottom:.4rem">
+            <span class="eyebrow">About</span>
+            <h2>Rights-based research, grounded in long-term partnerships</h2>
+          </div>
+          <p>I'm Dr Rebecca (Becs) Walker, a social anthropologist based in Cape Town. Walker Independent Research is my consultancy. I have more than a decade of experience in research on migration, health, gender, sex work, displacement and rights-based governance.</p>
+          <p>My work comes from a social justice approach and long collaboration with civil society and community-based organisations. I always aim to get findings to the people in a position to act on them, through advocacy, litigation and policy engagement.</p>
+          <p>I often work with researcher colleagues, bringing together a team with the right mix of skills, languages and local knowledge for each project.</p>
+          <p>I'm a Research Consultant with the African Centre for Migration &amp; Society (ACMS) at Wits University and a tutor on the MA in Refugee Protection and Forced Migration Studies at the University of London. I publish in peer-reviewed journals and write regularly for the Daily Maverick and other media.</p>
+        </div>
+        <aside>
+          <dl>
+            <div><dt>Approach</dt><dd>Rights-based, participatory and careful with people's stories</dd></div>
+            <div><dt>Methods</dt><dd>Qualitative and participatory research, arts-based and community-led methods, mixed-methods evaluation, policy and legal review</dd></div>
+            <div><dt>Audiences</dt><dd>Governments, UN agencies, funders, courts, civil society and the public</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="creative" class="creative">
+    <div class="wrap">
+      <div class="head" style="margin-bottom:1.5rem">
+        <span class="eyebrow">Creative methods</span>
+        <h2>Mwangaza Mama</h2>
+      </div>
+      <figure class="wide">
+        <img src="art-panels.jpg" alt="Large textile quilt with a blue and yellow wax-print border. On black cloth are six collage panels, each with the maker's name stitched above it, and the words 'I will speak with confidence and no fear like Winnie Mandela'" loading="lazy">
+        <figcaption>The group quilt, with a panel made by each woman. Its message reads: "I will speak with confidence and no fear like Winnie Mandela."</figcaption>
+      </figure>
+      <div class="grid">
+        <div class="text">
+          <p><strong>Mwangaza Mama (2017 to 2019)</strong> was a two-year creative storytelling project with a small group of cross-border migrant women in Johannesburg.</p>
+          <p>Through textile collage and their own stories, the women explored everyday life in the city and produced knowledge about the issues that affect them. Arts-based methods like these help people speak for themselves, across language barriers.</p>
+          <p>The work became a book and a peer-reviewed article.</p>
+          <div class="links">
+            <a href="https://issuu.com/move.methods.visual.explore/docs/mwangaza_mama_ebook">Read the book ↗</a>
+            <a href="https://doi.org/10.26522/ssj.v2020i14.2218">Read the article ↗</a>
+          </div>
+        </div>
+        <div>
+          <div class="gallery">
+            <figure class="big"><img src="art-quilt.jpg" alt="Textile quilt with Mwangaza Mama 2017–2019 embroidered in blue on red, around a drawing of a woman and child, with a blue and yellow wax-print border" loading="lazy"></figure>
+            <figure><img src="art-beads.jpg" alt="Detail of a red collage with beads, pom-poms, felt balls and a printed fabric circle" loading="lazy"></figure>
+            <figure><img src="art-houses.jpg" alt="Detail of hessian houses stitched under glittering green trees on red fabric" loading="lazy"></figure>
+            <figure><img src="art-figures.jpg" alt="Detail of patterned fabric figures outlined in green stitching on red" loading="lazy"></figure>
+            <figure><img src="art-girl.jpg" alt="Detail of a smiling girl in a sequinned dress beside a tree on yellow fabric with a blue satin border" loading="lazy"></figure>
+          </div>
+          <p class="credit">Textile collages made by the women of the Mwangaza Mama project.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Services</span>
+        <h2>What I do</h2>
+      </div>
+      <div class="services">
+        <div class="svc"><h3>Research</h3><p>Qualitative, participatory and mixed-methods studies, from design and ethics through fieldwork, analysis and write-up.</p></div>
+        <div class="svc"><h3>Evaluation and impact assessment</h3><p>Theory-based and end-term evaluations, impact assessments, change stories and best-practice documentation.</p></div>
+        <div class="svc"><h3>Policy and legal analysis</h3><p>National, regional and comparative policy reviews, legal analysis and evidence for strategic litigation.</p></div>
+        <div class="svc"><h3>Advocacy strategy</h3><p>Advocacy strategies and policy briefs that help networks and coalitions turn evidence into change.</p></div>
+        <div class="svc"><h3>Facilitation and capacity building</h3><p>Stakeholder engagement, focus groups, workshops, training and practical guides for practitioners.</p></div>
+        <div class="svc"><h3>Research communication</h3><p>Reports, plain-language guides, op-eds and broadcast-ready briefs for radio and television.</p></div>
+      </div>
+      <div class="head" style="margin:3rem 0 1.25rem">
+        <span class="eyebrow">Areas of expertise</span>
+      </div>
+      <ul class="areas">
+        <li>Migration, displacement and health systems</li>
+        <li>Health policy and access to health care, including Universal Health Coverage (UHC)</li>
+        <li>Gender, sexual and reproductive health and rights (SRHR), HIV and sex work</li>
+        <li>Children and young people on the move</li>
+        <li>Health xenophobia</li>
+        <li>Human trafficking</li>
+        <li>Arts-based and community-led research</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Selected experience</span>
+        <h2>Recent consultancy work</h2>
+        <p>Some of these projects I led on my own, and others with researcher colleagues.</p>
+      </div>
+      <div class="work">
+        <article class="job"><div class="yr">2025</div><div><div class="for">Médecins Sans Frontières (MSF)</div><h3>Impact of humanitarian and health funding cuts in Southern Africa</h3><p>Assessed how funding cuts have affected services and the people who rely on them across the region.</p></div></article>
+        <article class="job"><div class="yr">2025</div><div><div class="for">Southern Africa Sex Workers Alliance (SASWA)</div><h3>Advocacy strategy development</h3><p>Developed an advocacy strategy for SASWA members and stakeholders.</p></div></article>
+        <article class="job"><div class="yr">2024</div><div><div class="for">UNHCR and Lawyers for Human Rights</div><h3>Digital legal access tools</h3><p>Designed and led a mixed-methods study on digital solutions to improve migrants' access to justice in South Africa, using surveys, arts-based research and stakeholder interviews.</p></div></article>
+        <article class="job"><div class="yr">2023–24</div><div><div class="for">CESAR, for Genesis Analytics</div><h3>End-term evaluation of the South-South Learning Network</h3><p>Qualitative lead and lead report writer for a theory-based, mixed-methods evaluation of a peer learning network strengthening national HIV prevention programmes in Botswana, Côte d'Ivoire, Malawi, South Sudan and Uganda.</p></div></article>
+        <article class="job"><div class="yr">2023–24</div><div><div class="for">AIDS and Rights Alliance for Southern Africa (ARASA)</div><h3>Regional scan on access to SRHR and HIV services for transgender people</h3><p>Key informant interviews and policy analysis across Botswana, Lesotho, Malawi, Namibia, Uganda and Zimbabwe.</p></div></article>
+        <article class="job"><div class="yr">2022–24</div><div><div class="for">Scalabrini Institute for Human Mobility in Africa</div><h3>Vulnerabilities of young people on the move in SADC</h3><p>Qualitative research in Zambian border towns on protection gaps affecting young people on the move.</p></div></article>
+        <article class="job"><div class="yr">2023</div><div><div class="for">Health Justice Initiative</div><h3>Audit of a decade of health xenophobia in South Africa</h3><p>Reviewed ten years of evidence on xenophobic exclusion from health care, published as <i>Countering Health Xenophobia in South Africa</i>.</p></div></article>
+        <article class="job"><div class="yr">2023</div><div><div class="for">Save the Children ESARO · RIATT-ESA · UNICEF</div><h3>Child migrant protection and HIV policy</h3><p>Policy assessments of Southern African Development Community (SADC) child protection frameworks, regional HIV and migration policy for young people, and best practice for children on the move in Zambia and South Africa.</p></div></article>
+        <article class="job"><div class="yr">2021–22</div><div><div class="for">IOM · Global Initiative Against Transnational Organized Crime</div><h3>Right to health and human trafficking</h3><p>A regional review of migration and health law and policy in Southern Africa, and a risk assessment of organised crime in South Africa with a focus on human trafficking.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="clients">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Clients</span>
+        <h2>Who I have worked with</h2>
+      </div>
+      <div class="clients">
+        <div>UNHCR<small>UN Refugee Agency</small></div>
+        <div>UNICEF</div>
+        <div>IOM<small>International Organization for Migration</small></div>
+        <div>MSF<small>Médecins Sans Frontières</small></div>
+        <div>Save the Children<small>South Africa, Sweden and ESARO</small></div>
+        <div>GI-TOC<small>Global Initiative Against Transnational Organized Crime</small></div>
+        <div>Genesis Analytics</div>
+        <div>ARASA<small>AIDS and Rights Alliance for Southern Africa</small></div>
+        <div>RIATT-ESA</div>
+        <div>Scalabrini Institute for Human Mobility in Africa</div>
+        <div>Scalabrini Centre of Cape Town</div>
+        <div>APCOF<small>African Policing Civilian Oversight Forum</small></div>
+        <div>Lawyers for Human Rights</div>
+        <div>Health Justice Initiative</div>
+        <div>Sonke Gender Justice</div>
+        <div>Centre for Child Law<small>University of Pretoria</small></div>
+        <div>SASWA<small>Southern Africa Sex Workers Alliance</small></div>
+        <div>Brot für die Welt</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Publications</span>
+        <h2>Selected writing</h2>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Publication type">
+        <button role="tab" id="tab-papers" aria-selected="true" aria-controls="papers">Peer-reviewed</button>
+        <button role="tab" id="tab-reports" aria-selected="false" aria-controls="reports">Policy reports</button>
+      </div>
+      <ul class="pubs" id="papers" role="tabpanel" aria-labelledby="tab-papers">
+        <li><span class="y">2026</span><div><span class="t">Xenophobia is a public health emergency: Organised exclusion and the failure of Universal Health Coverage in South Africa.</span> <span class="m">Nyasulu, English … &amp; Walker. <i>The Lancet Regional Health – Africa</i>.</span> <a href="https://doi.org/10.1016/j.lanafr.2026.100123">Read ↗</a></div></li>
+        <li><span class="y">2025</span><div><span class="t">Closing the gap in the wrong direction: Migration, health policy, and the exclusion of asylum seekers, refugees and undocumented migrants from healthcare in South Africa.</span> <span class="m">Walker &amp; Vearey. <i>BMC Public Health</i>.</span> <a href="https://doi.org/10.1186/s12889-025-24751-4">Read ↗</a></div></li>
+        <li><span class="y">2025</span><div><span class="t">Upholding the right to health in contexts of displacement: A whole-of-route policy analysis in South Africa, Kenya, Somalia and the DRC.</span> <span class="m">Walker, Vearey, Bile &amp; Lolimo. <i>International Journal of Environmental Research and Public Health</i>.</span> <a href="https://doi.org/10.3390/ijerph22071042">Read ↗</a></div></li>
+        <li><span class="y">2024</span><div><span class="t">Punishment over protection: A reflection on distress migrants, health, and a state of (un)care in South Africa.</span> <span class="m">Walker &amp; Vearey. <i>Health and Human Rights</i>.</span> <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11683574/">Read ↗</a></div></li>
+        <li><span class="y">2024</span><div><span class="t">Mental healthcare among displaced Congolese: Policy and stakeholders' analysis.</span> <span class="m">Mutombo, Lobukulu &amp; Walker. <i>Frontiers in Human Dynamics</i>.</span> <a href="https://doi.org/10.3389/fhumd.2023.1273937">Read ↗</a></div></li>
+        <li><span class="y">2023</span><div><span class="t">"When a bad thing happens… you are better only when you are home": Alienation and mental health challenges experienced by Congolese and Somali migrants in Johannesburg.</span> <span class="m">Walker, Lakika, Makandwa &amp; Boeyink. <i>Frontiers in Human Dynamics</i>.</span> <a href="https://doi.org/10.3389/fhumd.2023.1260042">Read ↗</a></div></li>
+        <li><span class="y">2020</span><div><span class="t">A creative storytelling project with women migrants in Johannesburg, South Africa.</span> <span class="m">Walker &amp; Oliveira. <i>Studies in Social Justice</i>.</span> <a href="https://doi.org/10.26522/ssj.v2020i14.2218">Read ↗</a></div></li>
+        <li><span class="y">2019</span><div><span class="t">Sex work, migration and human trafficking in South Africa: From polarized arguments to potential partnerships.</span> <span class="m">Walker, Yingwana &amp; Echart. <i>Anti-Trafficking Review</i>.</span> <a href="https://doi.org/10.14197/atr.201219125">Read ↗</a></div></li>
+        <li><span class="y">2013</span><div><span class="t">Enduring Violence: Everyday Life and Conflict in Eastern Sri Lanka.</span> <span class="m">Walker. Manchester University Press (monograph).</span></div></li>
+      </ul>
+      <ul class="pubs" id="reports" role="tabpanel" aria-labelledby="tab-reports" hidden>
+        <li><span class="y">2025</span><div><span class="t">Your Right to Health Care in South Africa.</span> <span class="m">Collective Voices for Health Access.</span> <a href="https://collectivevoicesafrica.co.za/">Collective Voices ↗</a></div></li>
+        <li><span class="y">2024</span><div><span class="t">Measuring the Success of the South-South Learning Network by Tracking Learning into Action over Time: End-term Report.</span> <span class="m">Bello, Walker, Clacherty &amp; Mutabazi-Nizere. CESAR, for Genesis Analytics.</span></div></li>
+        <li><span class="y">2023</span><div><span class="t">Countering Health Xenophobia in South Africa.</span> <span class="m">Health Justice Initiative.</span></div></li>
+        <li><span class="y">2023</span><div><span class="t">It Is Just Because I Am a Foreigner: Making Sexual and Reproductive Health Rights a Reality for Migrants, Refugees and Asylum Seekers in South Africa.</span> <span class="m">Mlotshwa, Schulz, Walker &amp; Vearey. Sonke Gender Justice.</span></div></li>
+        <li><span class="y">2022</span><div><span class="t">Regional Scan of Access to Sexual and Reproductive Health Rights and HIV Services for Transgender People.</span> <span class="m">ARASA.</span></div></li>
+        <li><span class="y">2020</span><div><span class="t">Child Trafficking and Child Rights in South Africa: Exploring Myths and Realities.</span> <span class="m">Centre for Child Law, University of Pretoria.</span></div></li>
+        <li><span class="y">2020</span><div><span class="t">They Are Too Quiet About Migration: A Scoping Exercise Exploring Migration and Disability in South Africa.</span> <span class="m">IOM.</span></div></li>
+        <li><span class="y">2019</span><div><span class="t">Mwangaza Mama.</span> <span class="m">A creative storytelling book made with cross-border migrant women in Johannesburg, through textile collage and narrative. MoVE methods:visual:explore.</span> <a href="https://issuu.com/move.methods.visual.explore/docs/mwangaza_mama_ebook">Read on Issuu ↗</a></div></li>
+        <li><span class="y">2019</span><div><span class="t">Border Towns and Spaces of (In)visibility: Young People on the Move in Chipata and Katete, Zambia.</span> <span class="m">Scalabrini Institute for Human Mobility in Africa.</span></div></li>
+        <li><span class="y">2018</span><div><span class="t">Universal Health Coverage: Putting the Last Mile First.</span> <span class="m">Walker &amp; Richter. Global Network of Sex Work Projects.</span></div></li>
+        <li><span class="y">2017</span><div><span class="t">The Policing of Sex Work in South Africa.</span> <span class="m">Evans &amp; Walker. Sonke Gender Justice and SWEAT.</span></div></li>
+      </ul>
+      <p class="note">Full list of articles and book chapters on <a href="https://orcid.org/0000-0001-6611-835X">ORCID ↗</a>. Opinion writing in the Daily Maverick, News24, City Press, Business Day and The Conversation.</p>
+    </div>
+  </section>
+
+  <section id="background">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Background</span>
+        <h2>Academic appointments and affiliations</h2>
+      </div>
+      <div class="cols">
+        <div>
+          <h3>Appointments</h3>
+          <ul class="list">
+            <li><b>Research Consultant, ACMS, Wits University</b><span>2023 to present</span></li>
+            <li><b>Tutor, MA Refugee Protection and Forced Migration Studies</b><span>Refugee Law Initiative, University of London</span></li>
+            <li><b>Senior Researcher, ACMS, Wits University</b><span>2018 to 2023</span></li>
+            <li><b>Postdoctoral Fellow, ACMS and Wellcome Trust</b><span>2014 to 2018</span></li>
+            <li><b>Postdoctoral Fellow, Centre for Indian Studies in Africa, Wits</b><span>2010 to 2014</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Affiliations</h3>
+          <ul class="list">
+            <li><b>Steering Committee Member</b><span>Collective Voices for Health Access</span></li>
+            <li><b>Member</b><span>Asijiki Coalition for the Decriminalisation of Sex Work</span></li>
+            <li><b>Member</b><span>Western Cape Coalition Against Xenophobia</span></li>
+            <li><b>Supervisor and examiner</b><span>Honours, Masters and PhD, Wits University</span></li>
+            <li><b>Peer reviewer</b><span>International academic journals</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Contact</span>
+      <h2>Talk to me about your project</h2>
+      <p>For research, evaluations, policy work, training or media requests, send a short note about what you need and your timeline.</p>
+    </div>
+    <div class="card">
+      <dl>
+        <div><dt>Email</dt><dd><a href="mailto:walker.independent.research@gmail.com" id="email">walker.independent.research@gmail.com</a><button class="copy" type="button" id="copy">Copy</button></dd></div>
+        <div><dt>Location</dt><dd>Cape Town, South Africa</dd></div>
+        <div><dt>Online</dt><dd><a href="https://orcid.org/0000-0001-6611-835X">ORCID</a> <a href="https://www.linkedin.com/in/rebecca-walker-b9a482184">LinkedIn</a></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <span>© 2026 Walker Independent Research (Pty) Ltd</span>
+    <span>Cape Town, South Africa</span>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.tabs button').forEach(function (b) {
+  b.addEventListener('click', function () {
+    document.querySelectorAll('.tabs button').forEach(function (o) {
+      var on = o === b;
+      o.setAttribute('aria-selected', on);
+      document.getElementById(o.getAttribute('aria-controls')).hidden = !on;
+    });
+  });
+});
+document.getElementById('copy').addEventListener('click', function () {
+  var btn = this, txt = document.getElementById('email').textContent;
+  function done() { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1800); }
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(txt).then(done, function () {
+      var r = document.createRange(); r.selectNodeContents(document.getElementById('email'));
+      var s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    });
+  }
+});
+</script>
+</body>
+</html>
