@@ -116,6 +116,17 @@ p { margin: 0; }
 .c-coral { background: var(--coral); }
 .c-leaf { background: var(--leaf); }
 .c-sun { background: var(--sun); color: #0b2545; }
+.resources { margin-top: 3.5rem; display: grid; grid-template-columns: minmax(0, 14rem) minmax(0, 1fr); gap: 2rem; align-items: start; }
+.res-head { display: grid; gap: 1rem; justify-items: start; }
+.res-head p { color: var(--muted); font-size: .95rem; }
+.res-head .btn { font-size: .85rem; padding: .6rem 1rem; }
+.covers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
+.covers a { display: grid; gap: .3rem; align-content: start; text-decoration: none; color: inherit; }
+.covers img { display: block; width: 100%; height: auto; aspect-ratio: 600 / 845; object-fit: cover; object-position: top; border: 1px solid var(--rule); box-shadow: 0 14px 28px -16px rgba(11,37,69,.5); transition: transform .25s ease; margin-bottom: .6rem; }
+.covers a:hover img { transform: translateY(-4px) rotate(-1deg); }
+.covers b { font-family: var(--serif); font-weight: 500; font-size: 1.05rem; line-height: 1.25; color: var(--ink); }
+.covers a:hover b { color: var(--cobalt-ink); }
+.covers span { font-size: .82rem; color: var(--muted); }
 .media { margin-top: 3.5rem; display: grid; grid-template-columns: minmax(0, 14rem) minmax(0, 1fr); gap: 2rem; align-items: start; }
 .media > .label { padding-top: 1.2rem; }
 .media-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2.5rem; padding: 0; margin: 0; }
@@ -183,6 +194,15 @@ p { margin: 0; }
 .strip .paper { background: #fff; padding: 1rem; }
 .strip img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
 .strip figure:hover img { transform: scale(1.05); }
+.wardrobe { margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,.18); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 1rem clamp(2rem, 5vw, 5rem); }
+.wardrobe h3 { color: var(--on-dark); font-size: clamp(1.6rem, 3vw, 2.2rem); margin-top: .8rem; }
+.wb-text { display: grid; gap: 1rem; color: var(--on-dark-muted); font-size: 1.05rem; max-width: 40rem; }
+.dresses { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; margin-top: 1rem; }
+.dresses figure { margin: 0; aspect-ratio: 2 / 3; overflow: hidden; }
+.dresses img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
+.dresses figure:hover img { transform: scale(1.04); }
+.wb-credit { grid-column: 1 / -1; font-size: .82rem; color: var(--on-dark-muted); }
+.wb-text strong { color: var(--on-dark); font-weight: 600; }
 .creative .foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem 2rem; margin-top: 1.5rem; }
 .creative .foot small { color: var(--on-dark-muted); font-size: .82rem; }
 .creative .links { display: flex; flex-wrap: wrap; gap: .6rem; }
@@ -255,11 +275,12 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
   .top nav a:not(.cta) { display: none; }
 }
 @media (max-width: 720px) {
-  .hero .wrap, .about .wrap, .creative .intro, .contact .wrap, .expertise, .clients { grid-template-columns: minmax(0, 1fr); }
+  .wardrobe, .hero .wrap, .about .wrap, .creative .intro, .contact .wrap, .expertise, .clients { grid-template-columns: minmax(0, 1fr); }
   .about .sec-head { position: static; }
   .about dl { grid-template-columns: minmax(0, 1fr); }
   .svc-grid, .work-grid, .bg-grid, .media-list { grid-template-columns: minmax(0, 1fr); }
-  .media { grid-template-columns: minmax(0, 1fr); }
+  .media, .resources { grid-template-columns: minmax(0, 1fr); }
+  .covers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .courses { grid-template-columns: minmax(0, 1fr); }
   .pc { min-height: 14rem; }
   .mosaic { margin-left: 18px; }
@@ -294,7 +315,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
       <div class="hero-text">
         <span class="label">Research &amp; policy consultancy · Cape Town</span>
         <h1>Walker Independent Research</h1>
-        <p class="tagline">Research on migration, health and rights that reaches <em>the people who can act on it.</em></p>
+        <p class="tagline">Research on migration, health, <em>gender</em> and rights.</p>
         <p class="lede">Led by Dr Rebecca Walker. I carry out research, policy and legal analysis and programme evaluation across Southern and East Africa, for governments, UN agencies, international NGOs, funders and civil society.</p>
         <div class="actions">
           <a class="btn solid" href="#work">See my work</a>
@@ -342,16 +363,29 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
           <h3>Closing the gap in the wrong direction</h3>
           <span class="src"><b>BMC Public Health</b>How migrants are being excluded from health care in South Africa ↗</span>
         </a>
-        <a class="pc c-sun" href="https://collectivevoicesafrica.co.za/">
-          <span class="kind">Guide · 2025</span>
-          <h3>Your Right to Health Care in South Africa</h3>
-          <span class="src"><b>Collective Voices for Health Access</b>A plain-language guide to the right to health care ↗</span>
+        <a class="pc c-sun" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11683574/">
+          <span class="kind">Journal article · 2024</span>
+          <h3>Punishment over protection</h3>
+          <span class="src"><b>Health and Human Rights</b>Distress migrants, health, and a state of (un)care in South Africa ↗</span>
         </a>
         <a class="pc c-leaf" href="https://doi.org/10.3390/ijerph22071042">
           <span class="kind">Journal article · 2025</span>
           <h3>Upholding the right to health in contexts of displacement</h3>
           <span class="src"><b>IJERPH</b>A whole-of-route policy analysis in South Africa, Kenya, Somalia and the DRC ↗</span>
         </a>
+      </div>
+      <div class="resources">
+        <div class="res-head">
+          <span class="label">Guides and resources</span>
+          <p>Materials I have written and developed with Collective Voices for Health Access, free to read and share.</p>
+          <a class="btn" href="https://collectivevoicesafrica.co.za/">Get them on the Collective Voices website ↗</a>
+        </div>
+        <div class="covers">
+          <a href="https://collectivevoicesafrica.co.za/"><img src="res-booklet.jpg" alt="Cover of the booklet Your Right to Health Care in South Africa" width="600" height="839" loading="lazy"><b>Your Right to Health Care in South Africa</b><span>Booklet · 2025</span></a>
+          <a href="https://collectivevoicesafrica.co.za/"><img src="res-guide.jpg" alt="First page of Decide for Yourself, a classroom guide on migration and xenophobia" width="600" height="849" loading="lazy"><b>Decide for Yourself</b><span>Classroom guide for high schools</span></a>
+          <a href="https://collectivevoicesafrica.co.za/"><img src="res-facts.jpg" alt="Fast Facts: Migrants in South Africa, a fact sheet on eight myths and what the data shows" width="527" height="761" loading="lazy"><b>Fast Facts: Migrants in South Africa</b><span>Fact sheet</span></a>
+          <a href="https://collectivevoicesafrica.co.za/"><img src="res-transform.jpg" alt="Poster: Migration and healthcare in South Africa, on the 2023 High Court order on health care for mothers and children" width="600" height="848" loading="lazy"><b>Transforming Healthcare for All</b><span>The 2023 High Court order explained</span></a>
+        </div>
       </div>
       <div class="media">
         <span class="label">In the media</span>
@@ -474,6 +508,22 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
           <a class="btn solid" href="https://issuu.com/move.methods.visual.explore/docs/mwangaza_mama_ebook">Read the book ↗</a>
           <a class="btn" href="https://doi.org/10.26522/ssj.v2020i14.2218">Read the article ↗</a>
         </div>
+      </div>
+      <div class="wardrobe">
+        <div>
+          <span class="label">Creative methods</span>
+          <h3>The Wardrobe Project</h3>
+        </div>
+        <div class="wb-text">
+          <p><strong>The Wardrobe Project (2011 to 2014)</strong> was an art-based project with women living at the Usindiso Women's Shelter, 80 Albert Street, in inner-city Johannesburg. I co-ran it with Dr Glynis Clacherty from 2011 until the shelter closed in 2014.</p>
+          <p>Like Mwangaza Mama, it used art and making to create a space where women could tell their own stories in their own way.</p>
+        </div>
+        <div class="dresses">
+          <figure><img src="wb-dress1.jpg" alt="Sculpted dress on a mannequin, with handwritten words on the bodice and a deep purple skirt" loading="lazy"></figure>
+          <figure><img src="wb-dress2.jpg" alt="Sculpted dress with a white feathered bodice, beaded collar and dark skirt tied with rope" loading="lazy"></figure>
+          <figure><img src="wb-dress3.jpg" alt="Sculpted dress in grey cloth and silver panels over a red skirt, with a dark scarf" loading="lazy"></figure>
+        </div>
+        <p class="wb-credit">Dresses made by women of the Wardrobe Project.</p>
       </div>
     </div>
   </section>
