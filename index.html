@@ -63,7 +63,7 @@ p { margin: 0; }
 .sec-head p { color: var(--muted); font-size: var(--t-lg); }
 
 /* wax-print divider, cut from the quilt border */
-.wax { height: 34px; background: #1d3fb0 url("border.jpg") center / auto 100% repeat-x; }
+.wax { height: clamp(40px, 4.5vw, 56px); background: #1d3fb0 url("border.jpg") center / auto 100% repeat-x; }
 
 /* Header */
 .top { background: #fff; position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; border-bottom: 1px solid #dbe5f2; }
@@ -315,7 +315,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
       <div class="hero-text">
         <span class="label">Research &amp; policy consultancy · Cape Town</span>
         <h1>Walker Independent Research</h1>
-        <p class="tagline">Research on migration, health, <em>gender</em> and rights.</p>
+        <p class="tagline">Research on migration, health, gender and rights.</p>
         <p class="lede">Led by Dr Rebecca Walker. I carry out research, policy and legal analysis and programme evaluation across Southern and East Africa, for governments, UN agencies, international NGOs, funders and civil society.</p>
         <div class="actions">
           <a class="btn solid" href="#work">See my work</a>
