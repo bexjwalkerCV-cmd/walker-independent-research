@@ -137,6 +137,8 @@ p { margin: 0; }
 .about dl { margin: 1.5rem 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; border-top: 1px solid var(--rule); padding-top: 1.5rem; }
 .about dt { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: .35rem; }
 .about dd { margin: 0; font-size: .95rem; }
+.cv-callout { margin-top: 2.5rem; padding: 1.75rem 1.75rem 1.9rem; background: var(--surface); border: 1px solid var(--rule); border-left: 6px solid var(--leaf); display: grid; gap: 1rem; justify-items: start; }
+.cv-callout p { color: var(--text); font-size: 1rem; max-width: 38rem; }
 
 /* Services */
 .notes { margin: 0 0 3.5rem; position: relative; }
@@ -152,6 +154,10 @@ p { margin: 0; }
 .svc h3 { font-size: var(--t-h3); }
 .svc p { color: var(--muted); font-size: .97rem; }
 .expertise { margin-top: 3.5rem; display: grid; grid-template-columns: minmax(0, 14rem) minmax(0, 1fr); gap: 2rem; align-items: baseline; }
+.courses { padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.courses li { list-style: none; display: grid; gap: .3rem; align-content: start; padding: 1.1rem 1.2rem; background: var(--mist); border: 1px solid var(--rule); border-left: 4px solid var(--violet); }
+.courses b { font-family: var(--serif); font-size: 1.15rem; font-weight: 500; color: var(--ink); line-height: 1.25; }
+.courses span { font-size: .88rem; color: var(--muted); }
 .tags { display: flex; flex-wrap: wrap; gap: .55rem; padding: 0; margin: 0; }
 .tags li { list-style: none; border: 1px solid var(--rule); background: var(--mist); color: var(--ink); border-radius: 999px; padding: .45rem 1rem .45rem .8rem; font-size: .92rem; font-weight: 500; display: inline-flex; align-items: center; gap: .5rem; }
 .tags li::before { content: ""; width: .6rem; height: .6rem; border-radius: 50%; background: var(--cobalt); flex: none; }
@@ -254,6 +260,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
   .about dl { grid-template-columns: minmax(0, 1fr); }
   .svc-grid, .work-grid, .bg-grid, .media-list { grid-template-columns: minmax(0, 1fr); }
   .media { grid-template-columns: minmax(0, 1fr); }
+  .courses { grid-template-columns: minmax(0, 1fr); }
   .pc { min-height: 14rem; }
   .mosaic { margin-left: 18px; }
   .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -309,7 +316,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
         <div><b>10+ years</b><span>leading research and consultancy projects</span></div>
         <div><b>13 countries</b><span>of fieldwork and policy analysis in Africa</span></div>
         <div><b>PhD</b><span>Social Anthropology, University of Edinburgh</span></div>
-        <div><b>ACMS, Wits</b><span>Research Consultant, African Centre for Migration &amp; Society</span></div>
+        <div><b>ACMS, Wits</b><span>Research Associate, African Centre for Migration &amp; Society</span></div>
       </div>
     </div>
   </section>
@@ -367,16 +374,21 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
       </div>
       <div>
         <div class="body">
-          <p>I'm Dr Rebecca Walker, a social anthropologist in Cape Town. Walker Independent Research is my consultancy.</p>
-          <p>For more than a decade I have worked on migration, health, gender, sex work, displacement and rights-based governance. My work comes from a social justice approach and long collaboration with civil society and community-based organisations. I aim to get findings to the people in a position to act on them, through advocacy, litigation and policy engagement.</p>
-          <p>I often work with researcher colleagues, bringing together a team with the right mix of skills, languages and local knowledge for each project.</p>
-          <p>I'm a Research Consultant with the African Centre for Migration &amp; Society (ACMS) at Wits University and a tutor on the MA in Refugee Protection and Forced Migration Studies at the University of London. I publish in peer-reviewed journals and write regularly for the Daily Maverick and other media.</p>
+          <p>I'm a social anthropologist based in Cape Town. For more than ten years I have researched migration, health, gender, sex work and displacement, and how governments uphold or deny people's rights.</p>
+          <p>My work is rooted in social justice. I want research to be meaningful for the people who take part in it and valuable for those who use it. I work closely with civil society and community organisations, often over many years, and I make sure findings reach the people who can act on them, through advocacy, the courts and policy.</p>
+          <p>I often work with researcher colleagues, so that each project has the right mix of skills, languages and local knowledge.</p>
+          <p>I'm a Research Associate at the African Centre for Migration &amp; Society (ACMS), Wits University, and a tutor on the University of London's MA in Refugee Protection and Forced Migration Studies. I publish in peer-reviewed journals and write regularly for the Daily Maverick and other media.</p>
         </div>
         <dl>
-          <div><dt>Approach</dt><dd>Rights-based, participatory and careful with people's stories</dd></div>
-          <div><dt>Methods</dt><dd>Qualitative, participatory and arts-based research, mixed-methods evaluation, policy and legal review</dd></div>
+          <div><dt>Approach</dt><dd>Rights-based and participatory, and careful with people's stories</dd></div>
+          <div><dt>Methods</dt><dd>Qualitative, participatory and arts-based research; mixed-methods evaluation; policy and legal review</dd></div>
           <div><dt>Audiences</dt><dd>Governments, UN agencies, funders, courts, civil society and the public</dd></div>
         </dl>
+        <aside class="cv-callout">
+          <span class="label">Collective Voices for Health Access</span>
+          <p>I'm a founding member and on the steering committee of Collective Voices for Health Access. Formed in 2022, the coalition brings together more than 60 organisations and individuals working for health care for everyone who lives in South Africa, including migrants and refugees. My work with the coalition includes research, plain-language guides, submissions, op-eds and media work.</p>
+          <a class="btn solid" href="https://collectivevoicesafrica.co.za/">Visit the Collective Voices website ↗</a>
+        </aside>
       </div>
     </div>
   </section>
@@ -403,16 +415,25 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
         </div>
         <div class="svc">
           <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 13v6h4l10 6V7L9 13H5z"/><path d="M23 12c1.5 1 1.5 7 0 8M26 9c3 2.5 3 11.5 0 14"/></svg>
-          <h3>Advocacy strategy</h3><p>Advocacy strategies and policy briefs that help networks and coalitions turn evidence into change.</p>
+          <h3>Advocacy and communication</h3><p>Advocacy strategies, policy briefs, plain-language guides, op-eds and broadcast-ready briefs that help turn evidence into change.</p>
         </div>
         <div class="svc">
           <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="16" cy="10" r="4"/><circle cx="7" cy="14" r="3"/><circle cx="25" cy="14" r="3"/><path d="M9 27c0-5 3-8 7-8s7 3 7 8M2 26c0-3 2-6 5-6M30 26c0-3-2-6-5-6"/></svg>
           <h3>Facilitation and capacity building</h3><p>Stakeholder engagement, focus groups, workshops, training and practical guides for practitioners.</p>
         </div>
         <div class="svc">
-          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 4h13l5 5v19H7z"/><path d="M20 4v5h5M11 15h10M11 19h10M11 23h6"/></svg>
-          <h3>Research communication</h3><p>Reports, plain-language guides, op-eds and broadcast-ready briefs for radio and television.</p>
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 12l14-6 14 6-14 6z"/><path d="M8 15v7c0 2 4 4 8 4s8-2 8-4v-7M30 12v8"/></svg>
+          <h3>Teaching and supervision</h3><p>Postgraduate teaching on research methods, forced migration, health and humanitarian action, and supervision of Honours, Masters and PhD students. <a href="#teaching">Courses taught ↓</a></p>
         </div>
+      </div>
+      <div class="expertise" id="teaching">
+        <span class="label">Teaching</span>
+        <ul class="courses">
+          <li><b>Displacement, Healthcare and Humanitarian Action (RPM 280)</b><span>MA Refugee Protection and Forced Migration Studies, Refugee Law Initiative, University of London · Tutor, current</span></li>
+          <li><b>Research Methods</b><span>MA in Migration and Displacement, African Centre for Migration &amp; Society (ACMS), University of the Witwatersrand</span></li>
+          <li><b>Gender and Development</b><span>Department of Social Anthropology, University of the Witwatersrand · Lecturer, 2011 to 2017</span></li>
+          <li><b>Postgraduate supervision and examining</b><span>Honours, Masters and PhD students, University of the Witwatersrand</span></li>
+        </ul>
       </div>
       <div class="expertise">
         <span class="label">Areas of expertise</span>
@@ -531,10 +552,11 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
         <div>
           <h3>Appointments</h3>
           <ul class="list">
-            <li><b>Research Consultant, ACMS, Wits University</b><span>2023 to present</span></li>
+            <li><b>Research Associate, ACMS, Wits University</b><span>2023 to present</span></li>
             <li><b>Tutor, MA Refugee Protection and Forced Migration Studies</b><span>Refugee Law Initiative, University of London</span></li>
             <li><b>Senior Researcher, ACMS, Wits University</b><span>2018 to 2023</span></li>
             <li><b>Postdoctoral Fellow, ACMS and Wellcome Trust</b><span>2014 to 2018</span></li>
+            <li><b>Lecturer, Department of Social Anthropology, Wits</b><span>2011 to 2017</span></li>
           </ul>
         </div>
         <div>
@@ -548,7 +570,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
         <div>
           <h3>Affiliations</h3>
           <ul class="list">
-            <li><b>Steering Committee Member</b><span>Collective Voices for Health Access</span></li>
+            <li><b>Founding member and Steering Committee Member</b><span><a href="https://collectivevoicesafrica.co.za/">Collective Voices for Health Access ↗</a></span></li>
             <li><b>Member</b><span>Asijiki Coalition for the Decriminalisation of Sex Work</span></li>
             <li><b>Member</b><span>Western Cape Coalition Against Xenophobia</span></li>
             <li><b>Supervisor, examiner and peer reviewer</b><span>Wits University and international journals</span></li>
