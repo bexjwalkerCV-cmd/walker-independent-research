@@ -116,6 +116,17 @@ p { margin: 0; }
 .c-coral { background: var(--coral); }
 .c-leaf { background: var(--leaf); }
 .c-sun { background: var(--sun); color: #0b2545; }
+.book { margin-top: 1rem; display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 2rem; align-items: center; background: var(--violet); color: #fff; padding: 1.75rem 2rem; text-decoration: none; transition: transform .25s ease, box-shadow .25s ease; }
+.book:hover { transform: translateY(-4px); box-shadow: 0 18px 36px -18px rgba(11,37,69,.6); }
+.book-cover { display: block; width: 100%; height: auto; box-shadow: 0 16px 30px -12px rgba(0,0,0,.5); }
+.book-mark { aspect-ratio: 2 / 3; background: #2a1650; border-left: 8px solid #f2c94c; display: flex; flex-direction: column; justify-content: space-between; padding: 1.1rem .9rem; box-shadow: 0 16px 30px -12px rgba(0,0,0,.5); }
+.book-mark span { font-family: var(--serif); font-size: 1.45rem; line-height: 1.05; }
+.book-mark small { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; opacity: .8; }
+.book-text { display: grid; gap: .7rem; }
+.book-text .kind { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; opacity: .9; }
+.book-text h3 { color: #fff; font-size: clamp(1.4rem, 2.6vw, 1.9rem); line-height: 1.15; }
+.book-text p { font-size: .98rem; opacity: .92; max-width: 46rem; }
+.book-text .more { font-weight: 600; font-size: .9rem; }
 .resources { margin-top: 3.5rem; display: grid; grid-template-columns: minmax(0, 14rem) minmax(0, 1fr); gap: 2rem; align-items: start; }
 .res-head { display: grid; gap: 1rem; justify-items: start; }
 .res-head p { color: var(--muted); font-size: .95rem; }
@@ -280,6 +291,8 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
   .about dl { grid-template-columns: minmax(0, 1fr); }
   .svc-grid, .work-grid, .bg-grid, .media-list { grid-template-columns: minmax(0, 1fr); }
   .media, .resources { grid-template-columns: minmax(0, 1fr); }
+  .book { grid-template-columns: minmax(0, 1fr); padding: 1.5rem; }
+  .book-cover { width: 8rem; }
   .covers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .courses { grid-template-columns: minmax(0, 1fr); }
   .pc { min-height: 14rem; }
@@ -316,7 +329,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
         <span class="label">Research &amp; policy consultancy · Cape Town</span>
         <h1>Walker Independent Research</h1>
         <p class="tagline">Research on migration, health, gender and rights.</p>
-        <p class="lede">Led by Dr Rebecca Walker. I carry out research, policy and legal analysis and programme evaluation across Southern and East Africa, for governments, UN agencies, international NGOs, funders and civil society.</p>
+        <p class="lede">I am a social anthropologist based in Cape Town. I carry out research, evaluations and policy analysis on migration, health, gender and rights across Southern and East Africa. My work is participatory and rights-based, and designed to be used.</p>
         <div class="actions">
           <a class="btn solid" href="#work">See my work</a>
           <a class="btn" href="#contact">Get in touch</a>
@@ -374,6 +387,15 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
           <span class="src"><b>IJERPH</b>A whole-of-route policy analysis in South Africa, Kenya, Somalia and the DRC ↗</span>
         </a>
       </div>
+      <a class="book" id="book" href="https://www.jstor.org/stable/j.ctv5nphhd">
+        <img class="book-cover" src="book-cover.jpg" alt="Cover of Enduring Violence by Rebecca Walker, showing a fisherman in a small boat on a lagoon at dusk" width="150" height="246">
+        <div class="book-text">
+          <span class="kind">Book · Manchester University Press · 2013</span>
+          <h3>Enduring Violence: Everyday Life and Conflict in Eastern Sri Lanka</h3>
+          <p>An ethnography of how Tamil-speaking communities in Batticaloa, in Sri Lanka's war-affected east, live with and make sense of violence in everyday life. It draws on two years of work with women human rights activists who supported families whose relatives had been threatened, disappeared or killed, and built networks of trust amid ongoing violence.</p>
+          <span class="more">Read on JSTOR ↗</span>
+        </div>
+      </a>
       <div class="resources">
         <div class="res-head">
           <span class="label">Guides and resources</span>
@@ -408,8 +430,9 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
       </div>
       <div>
         <div class="body">
-          <p>I'm a social anthropologist based in Cape Town. For more than ten years I have researched migration, health, gender, sex work and displacement, and how governments uphold or deny people's rights.</p>
+          <p>I'm Dr Rebecca Walker. For more than ten years I have researched migration, health, gender, sex work and displacement, and how governments uphold or deny people's rights.</p>
           <p>My work is rooted in social justice. I want research to be meaningful for the people who take part in it and valuable for those who use it. I work closely with civil society and community organisations, often over many years, and I make sure findings reach the people who can act on them, through advocacy, the courts and policy.</p>
+          <p>My earlier research was in Sri Lanka. I spent two years in Batticaloa, in the war-affected east of the country, working closely with women human rights activists who quietly supported families whose relatives had been threatened, disappeared or killed. This became my book, <a href="#book"><i>Enduring Violence: Everyday Life and Conflict in Eastern Sri Lanka</i></a> (Manchester University Press, 2013).</p>
           <p>I often work with researcher colleagues, so that each project has the right mix of skills, languages and local knowledge.</p>
           <p>I'm a Research Associate at the African Centre for Migration &amp; Society (ACMS), Wits University, and a tutor on the University of London's MA in Refugee Protection and Forced Migration Studies. I publish in peer-reviewed journals and write regularly for the Daily Maverick and other media.</p>
         </div>
@@ -479,6 +502,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
           <li>Children and young people on the move</li>
           <li>Health xenophobia</li>
           <li>Human trafficking</li>
+          <li>Conflict, violence and human rights (Sri Lanka)</li>
           <li>Arts-based and community-led research</li>
         </ul>
       </div>
@@ -586,7 +610,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
         <li><span class="y">2019</span><div><span class="t">Border Towns and Spaces of (In)visibility: Young People on the Move in Chipata and Katete, Zambia</span><span class="m">Scalabrini Institute for Human Mobility in Africa</span></div><span></span></li>
         <li><span class="y">2018</span><div><span class="t">Universal Health Coverage: Putting the Last Mile First</span><span class="m">Walker &amp; Richter · Global Network of Sex Work Projects</span></div><span></span></li>
         <li><span class="y">2017</span><div><span class="t">The Policing of Sex Work in South Africa</span><span class="m">Evans &amp; Walker · Sonke Gender Justice and SWEAT</span></div><span></span></li>
-        <li><span class="y">2013</span><div><span class="t">Enduring Violence: Everyday Life and Conflict in Eastern Sri Lanka</span><span class="m">Monograph · Manchester University Press</span></div><span></span></li>
+        <li><span class="y">2013</span><div><span class="t">Enduring Violence: Everyday Life and Conflict in Eastern Sri Lanka</span><span class="m">Monograph · Manchester University Press</span></div><a href="https://www.jstor.org/stable/j.ctv5nphhd">Find ↗</a></li>
       </ul>
       <p class="note">Full list on <a href="https://orcid.org/0000-0001-6611-835X">ORCID ↗</a>. I also write for the Daily Maverick, News24, City Press, Business Day and The Conversation.</p>
     </div>
