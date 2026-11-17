@@ -228,7 +228,10 @@ p { margin: 0; }
 .strip figure:hover img { transform: scale(1.05); }
 .wardrobe { margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,.18); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 1rem clamp(2rem, 5vw, 5rem); }
 .wardrobe h3 { color: var(--on-dark); font-size: clamp(1.6rem, 3vw, 2.2rem); margin-top: .8rem; }
-.wb-text { display: grid; gap: 1rem; color: var(--on-dark-muted); font-size: 1.05rem; max-width: 40rem; }
+.wb-text { display: grid; gap: 1rem; align-content: start; color: var(--on-dark-muted); font-size: 1.05rem; max-width: 40rem; }
+.albert { margin: 1.5rem 0 0; }
+.albert img { display: block; width: 100%; height: auto; }
+.albert figcaption { font-size: .82rem; color: var(--on-dark-muted); margin-top: .6rem; }
 .dresses { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; margin-top: 1rem; }
 .dresses figure { margin: 0; aspect-ratio: 2 / 3; overflow: hidden; }
 .dresses img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
@@ -559,6 +562,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
         <div>
           <span class="label">Creative methods</span>
           <h3>The Wardrobe Project</h3>
+          <figure class="albert"><img src="albert-street.jpg" alt="Black and white photograph of a brick building, high walls and wire mesh fencing in the courtyard at 80 Albert Street, Johannesburg" width="1200" height="965" loading="lazy"><figcaption>80 Albert Street, Johannesburg</figcaption></figure>
         </div>
         <div class="wb-text">
           <p><strong>The Wardrobe Project (2011 to 2014)</strong> was an art-based project with women living at the Usindiso Women's Shelter, 80 Albert Street, in inner-city Johannesburg. I co-ran it with Dr Glynis Clacherty from 2011 until the shelter closed in 2014.</p>
