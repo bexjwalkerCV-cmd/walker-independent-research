@@ -95,7 +95,16 @@ p { margin: 0; }
 
 /* Hero */
 .hero { background: var(--sky); overflow: hidden; }
-.hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; padding-block: clamp(3.5rem, 7vw, 6rem); }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr); align-items: center; padding-block: clamp(4rem, 9vw, 7.5rem); }
+.hero-stage { position: relative; isolation: isolate; min-height: min(44rem, 88vh); display: grid; align-content: center; }
+.hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 70% center; z-index: -2; }
+.hero-stage::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, color-mix(in srgb, var(--sky) 96%, transparent) 0%, color-mix(in srgb, var(--sky) 90%, transparent) 34%, color-mix(in srgb, var(--sky) 45%, transparent) 55%, transparent 75%); }
+.hero-stage > .wrap { width: 100%; }
+.hero-text { max-width: 36rem; }
+.hero-stage .lede { color: var(--text); }
+.hero-cap { position: absolute; right: max(16px, env(safe-area-inset-right, 0px)); bottom: .7rem; margin: 0; font-size: .78rem; color: #fff; background: rgba(11,37,69,.7); padding: .3rem .6rem; border-radius: 3px; }
+.hero-cap a { color: #fff; }
+.creds { position: relative; background: var(--sky); }
 .hero-text { display: grid; gap: 1.6rem; }
 .hero h1 { font-size: clamp(2.8rem, 6.4vw, 5rem); font-weight: 500; letter-spacing: -.025em; line-height: 1; }
 .tagline { font-family: var(--serif); font-size: clamp(1.35rem, 2.4vw, 1.75rem); line-height: 1.3; color: var(--ink); max-width: 30rem; }
@@ -401,6 +410,10 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
   .strip .paper { grid-column: 1 / -1; }
   .pubs li { grid-template-columns: minmax(0, 1fr); gap: .3rem; }
   .top img { height: 76px; }
+  .hero-stage::before { background: color-mix(in srgb, var(--sky) 90%, transparent); }
+  .hero .wrap { padding-bottom: 4.5rem; }
+  .hero-cap { left: max(16px, env(safe-area-inset-left, 0px)); right: auto; max-width: calc(100% - 32px); }
+  .hero-bg { object-position: center; }
   .contact dl { border-left: 0; padding-left: 0; border-top: 1px solid rgba(255,255,255,.18); padding-top: 1.5rem; }
 }
 </style>
@@ -424,6 +437,8 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
 
 <main id="top">
   <section class="hero">
+    <div class="hero-stage">
+    <img class="hero-bg" src="art-panels.jpg" alt="" aria-hidden="true">
     <div class="wrap">
       <div class="hero-text">
         <span class="label">Research &amp; policy consultancy · Cape Town</span>
@@ -435,20 +450,8 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
           <a class="btn" href="#contact">Get in touch</a>
         </div>
       </div>
-      <figure class="mosaic">
-        <div class="tiles">
-          <div class="tile big"><img src="art-panels.jpg" alt="Group textile quilt with six collage panels from the Mwangaza Mama project"></div>
-          <div class="tile tall"><img src="wb-dress1.jpg" alt="Sculpted dress from the Wardrobe Project, with handwritten words on the bodice and a purple skirt" style="object-position:center 30%"></div>
-          <div class="tile"><img src="art-quilt.jpg" alt="Mwangaza Mama title quilt"></div>
-          <div class="tile"><img src="art-girl.jpg" alt="Stitched figure of a girl in a sequinned dress"></div>
-          <div class="tile"><img src="art-beads.jpg" alt="Beads and pom-poms on a red collage"></div>
-          <div class="tile"><img src="art-houses.jpg" alt="Collage of houses in fabric"></div>
-          <div class="tile wide"><img src="art-becky.jpg" alt="Purple collage panel with a name stitched above it"></div>
-          <div class="tile"><img src="art-figures.jpg" alt="Fabric collage of figures"></div>
-          <div class="tile"><img src="art-words.jpg" alt="Handwritten panel: In the city we have no power"></div>
-        </div>
-        <figcaption>Artwork from Mwangaza Mama and the Wardrobe Project · <a href="#creative">Creative methods</a></figcaption>
-      </figure>
+    </div>
+    <p class="hero-cap">Group quilt from the Mwangaza Mama project · <a href="#creative">Creative methods</a></p>
     </div>
     <div class="creds">
       <div class="wrap">
