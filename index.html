@@ -108,7 +108,18 @@ p { margin: 0; }
 .mosaic { margin: 0; position: relative; z-index: 0; }
 .mosaic::before { content: ""; position: absolute; inset: -18px 22px 44px -18px; background: var(--cobalt); z-index: -1; }
 .tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; background: #0b2545; padding: 6px; box-shadow: 0 30px 60px -20px rgba(11,37,69,.45); }
-.tiles img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; min-width: 0; }
+.tile { position: relative; aspect-ratio: 1; overflow: hidden; background: #0b2545; min-width: 0; }
+.tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; }
+.tile img:first-child { opacity: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  .tile img { animation: tilefade 18s infinite; }
+  .tile img:nth-child(1) { animation-delay: var(--d, 0s); }
+  .tile img:nth-child(2) { animation-delay: calc(var(--d, 0s) - 12s); }
+  .tile img:nth-child(3) { animation-delay: calc(var(--d, 0s) - 6s); }
+  .tile.d1 { --d: -1.5s; } .tile.d2 { --d: -3s; } .tile.d3 { --d: -4.5s; }
+  .tile img { will-change: opacity, transform; }
+}
+@keyframes tilefade { 0% { opacity: 1; transform: scale(1); } 30% { opacity: 1; } 36% { opacity: 0; transform: scale(1.06); } 94% { opacity: 0; transform: scale(1); } 100% { opacity: 1; } }
 .tiles .t-wide { grid-column: 1 / -1; aspect-ratio: 1600 / 932; }
 .mosaic figcaption { font-size: .8rem; color: var(--muted); margin-top: .9rem; text-align: right; }
 .creds { border-top: 1px solid var(--rule); }
@@ -242,7 +253,11 @@ p { margin: 0; }
 .quote cite { display: block; font-family: var(--sans); font-style: normal; font-size: .8rem; color: var(--on-dark-muted); margin-top: .7rem; letter-spacing: .02em; }
 .wide { margin: 0; }
 .wide img { display: block; width: 100%; height: auto; }
-.strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; }
+.strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; }
+.strip .wide { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+.creative .right { display: grid; gap: 1.5rem; }
+.creative .words { margin: 0; }
+.creative .words img { display: block; width: 100%; height: auto; box-shadow: 0 18px 40px -18px rgba(0,0,0,.6); transform: rotate(-1.2deg); }
 .strip figure { margin: 0; aspect-ratio: 1; overflow: hidden; }
 .strip .paper { background: #fff; padding: 1rem; }
 .strip img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
@@ -258,6 +273,17 @@ p { margin: 0; }
 .dresses img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
 .dresses figure:hover img { transform: scale(1.04); }
 .wb-credit { grid-column: 1 / -1; font-size: .82rem; color: var(--on-dark-muted); }
+.creative { overflow-x: clip; }
+.wardrobe { margin-top: 3.5rem; padding-top: 0; border-top: 0; display: block; }
+.wb-hero { position: relative; isolation: isolate; margin-inline: calc(50% - 50vw); padding-block: clamp(3rem, 7vw, 5.5rem); }
+.wb-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 45%; z-index: -2; filter: grayscale(1); }
+.wb-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(7,18,34,.92) 0%, rgba(7,18,34,.78) 45%, rgba(7,18,34,.55) 100%); }
+.wb-inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 1rem clamp(2rem, 5vw, 5rem); }
+.wb-place { color: var(--on-dark-muted); font-size: .9rem; margin-top: .6rem; }
+.wb-text { color: #d4def0; }
+.wardrobe .dresses { margin-top: .75rem; }
+.wardrobe .wb-credit { margin-top: .75rem; }
+.wb-text .links { margin-top: .5rem; }
 .wb-text strong { color: var(--on-dark); font-weight: 600; }
 .creative .foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem 2rem; margin-top: 1.5rem; }
 .creative .foot small { color: var(--on-dark-muted); font-size: .82rem; }
@@ -331,7 +357,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
   .top nav a:not(.cta) { display: none; }
 }
 @media (max-width: 720px) {
-  .wardrobe, .hero .wrap, .about .wrap, .creative .intro, .contact .wrap, .expertise, .clients { grid-template-columns: minmax(0, 1fr); }
+  .wb-inner, .hero .wrap, .about .wrap, .creative .intro, .contact .wrap, .expertise, .clients { grid-template-columns: minmax(0, 1fr); }
   .about .sec-head { position: static; }
   .about dl { grid-template-columns: minmax(0, 1fr); }
   .svc-grid, .work-grid, .bg-grid, .media-list { grid-template-columns: minmax(0, 1fr); }
@@ -344,6 +370,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
   .pc { min-height: 14rem; }
   .mosaic { margin-left: 18px; }
   .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .strip .wide { grid-row: auto; aspect-ratio: 1600 / 932; }
   .strip .paper { grid-column: 1 / -1; }
   .pubs li { grid-template-columns: minmax(0, 1fr); gap: .3rem; }
   .top img { height: 48px; }
@@ -383,12 +410,28 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
       </div>
       <figure class="mosaic">
         <div class="tiles">
-          <img class="t-wide" src="art-panels.jpg" alt="Large textile quilt with a blue and yellow wax-print border and six colourful collage panels on black cloth" width="1600" height="932">
-          <img src="art-quilt.jpg" alt="Textile quilt with Mwangaza Mama 2017–2019 embroidered on red, around a drawing of a woman and child" width="1000" height="939">
-          <img src="art-beads.jpg" alt="Detail of a red collage with beads, pom-poms and felt balls" width="600" height="600">
-          <img src="art-girl.jpg" alt="Detail of a smiling girl in a sequinned dress beside a tree on yellow fabric" width="600" height="600">
+          <div class="tile t-wide d0">
+            <img src="art-panels.jpg" alt="Group textile quilt from the Mwangaza Mama project">
+            <img src="albert-street.jpg" alt="80 Albert Street, Johannesburg, in black and white" loading="lazy">
+            <img src="svc-quilt.jpg" alt="Red textile collage with handwritten stories stitched on" loading="lazy">
+          </div>
+          <div class="tile d1">
+            <img src="art-quilt.jpg" alt="Mwangaza Mama title quilt">
+            <img src="wb-dress1.jpg" alt="Sculpted dress from the Wardrobe Project" loading="lazy">
+            <img src="art-becky.jpg" alt="Purple collage panel with Becky stitched above it" loading="lazy">
+          </div>
+          <div class="tile d2">
+            <img src="art-beads.jpg" alt="Beads and pom-poms on a red collage">
+            <img src="svc-workshop.jpg" alt="Hands drawing with oil pastels on brown paper in a workshop" loading="lazy">
+            <img src="wb-dress2.jpg" alt="Sculpted dress with a white feathered bodice" loading="lazy">
+          </div>
+          <div class="tile d3">
+            <img src="art-girl.jpg" alt="Stitched figure of a girl in a sequinned dress">
+            <img src="art-words.jpg" alt="Handwritten panel: In the city we have no power" loading="lazy">
+            <img src="wb-dress3.jpg" alt="Sculpted dress in grey and silver over red" loading="lazy">
+          </div>
         </div>
-        <figcaption>Textile collages from the Mwangaza Mama project, Johannesburg · <a href="#creative">About the project</a></figcaption>
+        <figcaption>From my work: Mwangaza Mama, the Wardrobe Project and 80 Albert Street · <a href="#creative">Creative methods</a></figcaption>
       </figure>
     </div>
     <div class="creds">
@@ -571,12 +614,17 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
           <p><strong>Mwangaza Mama (2017 to 2019)</strong> was a two-year creative storytelling project with a small group of cross-border migrant women in Johannesburg. Through textile collage and their own stories, the women explored everyday life in the city and the issues that affect them.</p>
           <p>Arts-based methods like these help people speak for themselves, across language barriers.</p>
         </div>
-        <blockquote class="quote">"I will speak with confidence and no fear like Winnie Mandela."<cite>Stitched on the group quilt</cite></blockquote>
+        <div class="right">
+          <figure class="words"><img src="art-words.jpg" alt="Handwritten panel stitched onto red cloth: In the city we come, we have no power and things are very different from what we hope. We have nowhere to go, it's not easy to go back and nowhere to begin. We are in confusion." loading="lazy"></figure>
+          <blockquote class="quote">"I will speak with confidence and no fear like Winnie Mandela."<cite>Stitched on the group quilt</cite></blockquote>
+        </div>
       </div>
       <div class="strip">
+        <figure class="wide"><img src="art-panels.jpg" alt="The group quilt: six collage panels, each with its maker's name, around the words I will speak with confidence and no fear like Winnie Mandela" loading="lazy"></figure>
+        <figure><img src="art-becky.jpg" alt="Purple collage panel of patterned fabric shapes, with Becky stitched in white above it" loading="lazy"></figure>
+        <figure><img src="art-girl.jpg" alt="Stitched figure of a smiling girl in a sequinned dress beside a tree on yellow cloth" loading="lazy"></figure>
         <figure class="paper"><img src="drawing.jpg" alt="Pencil drawing of a woman carrying a bag, holding a small child's hand, walking towards tall buildings in Johannesburg" loading="lazy"></figure>
         <figure><img src="art-houses.jpg" alt="Detail of hessian houses stitched under glittering green trees" loading="lazy"></figure>
-        <figure><img src="art-figures.jpg" alt="Detail of patterned fabric figures outlined in green stitching" loading="lazy"></figure>
       </div>
       <div class="foot">
         <small>Textile collages made by the women of the Mwangaza Mama project.</small>
@@ -587,16 +635,21 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
         </div>
       </div>
       <div class="wardrobe">
-        <div>
-          <span class="label">Creative methods</span>
-          <h3>The Wardrobe Project</h3>
-          <figure class="albert"><img src="albert-street.jpg" alt="Black and white photograph of a brick building, high walls and wire mesh fencing in the courtyard at 80 Albert Street, Johannesburg" width="1200" height="965" loading="lazy"><figcaption>80 Albert Street, Johannesburg</figcaption></figure>
-        </div>
+        <div class="wb-hero">
+          <img class="wb-bg" src="albert-street.jpg" alt="" aria-hidden="true" loading="lazy">
+          <div class="wrap wb-inner">
+            <div>
+              <span class="label">Creative methods</span>
+              <h3>The Wardrobe Project</h3>
+              <p class="wb-place">80 Albert Street, Johannesburg</p>
+            </div>
         <div class="wb-text">
-          <p><strong>The Wardrobe Project (2011 to 2014)</strong> was an art-based project with women living at the Usindiso Women's Shelter, 80 Albert Street, in inner-city Johannesburg. I co-ran it with Dr Glynis Clacherty from 2011 until the shelter closed in 2014.</p>
-          <p>Like Mwangaza Mama, it used art and making to create a space where women could tell their own stories in their own way.</p>
-          <p>In 2023, a fire at 80 Albert Street killed 76 people. I wrote about the building and its history in the Daily Maverick soon after. I still think often about the aftermath, and how quickly the City of Johannesburg moved to blame the dead for their own deaths. We continue to see the same callousness and dehumanisation of people today.</p>
-          <div class="links"><a class="btn solid" href="https://www.dailymaverick.co.za/article/2023-09-03-a-building-and-lives-left-to-burn-80-albert-street-must-be-remembered-in-this-way/">Read "A building and lives left to burn" ↗</a></div>
+              <p><strong>The Wardrobe Project (2011 to 2014)</strong> was an art-based project with women living at the Usindiso Women's Shelter, 80 Albert Street, in inner-city Johannesburg. I co-ran it with Dr Glynis Clacherty from 2011 until the shelter closed in 2014.</p>
+              <p>Like Mwangaza Mama, it used art and making to create a space where women could tell their own stories in their own way. Glynis and I wrote about the project in "Shaping New Spaces", a chapter in <i>Healing and Change in the City of Gold</i> (Springer, 2015).</p>
+              <p>In 2023, a fire at 80 Albert Street killed 76 people. I wrote about the building and its history in the Daily Maverick soon after. I still think often about the aftermath, and how quickly the City of Johannesburg moved to blame the dead for their own deaths. We continue to see the same callousness and dehumanisation of people today.</p>
+              <div class="links"><a class="btn solid" href="https://link.springer.com/chapter/10.1007/978-3-319-08768-9_3">Read our chapter, "Shaping New Spaces" ↗</a><a class="btn" href="https://www.dailymaverick.co.za/article/2023-09-03-a-building-and-lives-left-to-burn-80-albert-street-must-be-remembered-in-this-way/">Read "A building and lives left to burn" ↗</a></div>
+            </div>
+          </div>
         </div>
         <div class="dresses">
           <figure><img src="wb-dress1.jpg" alt="Sculpted dress on a mannequin, with handwritten words on the bodice and a deep purple skirt" loading="lazy"></figure>
