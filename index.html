@@ -277,7 +277,24 @@ p { margin: 0; }
 .wardrobe { margin-top: 3.5rem; padding-top: 0; border-top: 0; display: block; }
 .wb-hero { position: relative; isolation: isolate; margin-inline: calc(50% - 50vw); padding-block: clamp(3rem, 7vw, 5.5rem); }
 .wb-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 45%; z-index: -2; filter: grayscale(1); }
-.wb-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(7,18,34,.92) 0%, rgba(7,18,34,.78) 45%, rgba(7,18,34,.55) 100%); }
+.wb-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--mist); opacity: .84; }
+.wb-hero h3 { color: var(--ink) !important; }
+.wb-hero .label { color: var(--cobalt-ink) !important; }
+.wb-hero .wb-place { color: var(--muted); }
+.wb-hero .wb-text, .wb-hero .wb-text p { color: var(--text); }
+.wb-hero .wb-text strong { color: var(--ink); }
+.wb-hero .btn { border-color: var(--ink); color: var(--ink); }
+.wb-hero .btn.solid { background: var(--ink); border-color: var(--ink); color: var(--mist); }
+.wb-hero .btn:hover { background: var(--cobalt); border-color: var(--cobalt); color: #fff; }
+.wardrobe { position: relative; isolation: isolate; }
+.wardrobe::before { content: ""; position: absolute; top: 0; bottom: calc(-1 * clamp(4rem, 8vw, 6.5rem)); left: calc(50% - 50vw); right: calc(50% - 50vw); background: var(--mist); z-index: -3; }
+.creative .wb-hero .btn { border-color: var(--ink); color: var(--ink); }
+.creative .wb-hero .btn.solid { background: var(--sun); border-color: var(--sun); color: #0b2545; }
+.creative .wb-hero .btn:hover { background: var(--cobalt); border-color: var(--cobalt); color: #fff; }
+.wardrobe .wb-fire figcaption, .wardrobe .wb-credit { color: var(--muted); }
+.wb-fire { margin: .75rem 0 0; }
+.wb-fire img { display: block; width: 100%; height: auto; }
+.wb-fire figcaption { font-size: .82rem; color: var(--on-dark-muted); margin-top: .6rem; }
 .wb-inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 1rem clamp(2rem, 5vw, 5rem); }
 .wb-place { color: var(--on-dark-muted); font-size: .9rem; margin-top: .6rem; }
 .wb-text { color: #d4def0; }
@@ -662,6 +679,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
             </div>
           </div>
         </div>
+        <figure class="wb-fire"><img src="albert-fire.jpg" alt="Two men stand behind razor wire and police tape, looking up at the burnt-out front of 80 Albert Street. Text on the image reads: 76 lives lost, 501 people displaced, 206 of them SA citizens." width="1600" height="900" loading="lazy"><figcaption>80 Albert Street after the fire, August 2023.</figcaption></figure>
         <div class="dresses">
           <figure><img src="wb-dress1.jpg" alt="Sculpted dress on a mannequin, with handwritten words on the bodice and a deep purple skirt" loading="lazy"></figure>
           <figure><img src="wb-dress2.jpg" alt="Sculpted dress with a white feathered bodice, beaded collar and dark skirt tied with rope" loading="lazy"></figure>
