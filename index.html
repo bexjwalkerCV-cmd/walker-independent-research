@@ -187,6 +187,17 @@ p { margin: 0; }
 .cv-callout p { color: var(--text); font-size: 1rem; max-width: 38rem; }
 
 /* Services */
+.svc-stage { position: relative; isolation: isolate; padding: clamp(1.5rem, 4vw, 3rem); overflow: hidden; }
+.svc-bg { position: absolute; inset: 0; z-index: -1; display: grid; grid-template-columns: 1fr 1.3fr; }
+.svc-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.svc-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,37,69,.78) 0%, rgba(11,37,69,.45) 30%, rgba(11,37,69,.35) 100%); }
+.svc-stage .sec-head h2 { color: #fff; }
+.svc-stage .sec-head .label { color: var(--sun); }
+.svc-stage .svc-grid { border: 0; gap: .9rem; }
+.svc-stage .svc { background: var(--surface); border: 0; box-shadow: 0 12px 30px -14px rgba(0,0,0,.55); }
+.svc-stage .svc:hover { background: var(--surface); transform: translateY(-3px); }
+.svc { transition: background .2s, transform .2s; }
+
 .notes { margin: 0 0 3.5rem; position: relative; }
 .notes img { display: block; width: 100%; height: auto; min-height: 140px; object-fit: cover; }
 .notes::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 6px; background: linear-gradient(90deg, var(--cobalt) 0 25%, var(--coral) 25% 50%, var(--sun) 50% 75%, var(--leaf) 75%); }
@@ -322,6 +333,8 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
   .book-cover { width: 8rem; }
   .covers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .courses { grid-template-columns: minmax(0, 1fr); }
+  .svc-bg { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+  .svc-stage { margin-inline: 0; }
   .pc { min-height: 14rem; }
   .mosaic { margin-left: 18px; }
   .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -482,7 +495,9 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
   <section class="services band" id="services">
     <div class="wrap">
       <figure class="notes"><img src="notes.jpg" alt="Coloured pens on open notebooks and large sheets of handwritten workshop notes spread across a wooden table" width="1400" height="349" loading="lazy"></figure>
-      <div class="sec-head">
+      <div class="svc-stage">
+        <div class="svc-bg" aria-hidden="true"><img src="svc-workshop.jpg" alt="" loading="lazy"><img src="svc-quilt.jpg" alt="" loading="lazy"></div>
+        <div class="sec-head">
         <span class="label">Services</span>
         <h2>What I do</h2>
       </div>
@@ -511,6 +526,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
           <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 12l14-6 14 6-14 6z"/><path d="M8 15v7c0 2 4 4 8 4s8-2 8-4v-7M30 12v8"/></svg>
           <h3>Teaching and supervision</h3><p>Postgraduate teaching on research methods, forced migration, health and humanitarian action, and supervision of Honours, Masters and PhD students. <a href="#teaching">Courses taught ↓</a></p>
         </div>
+      </div>
       </div>
       <div class="expertise" id="teaching">
         <span class="label">Teaching</span>
