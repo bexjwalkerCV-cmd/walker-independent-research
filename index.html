@@ -322,6 +322,17 @@ p { margin: 0; }
 .pubs a:hover { text-decoration: underline; }
 .note { color: var(--muted); font-size: .92rem; margin-top: 1.5rem; }
 
+/* Background section with photo */
+.bg-photo { position: relative; isolation: isolate; overflow: hidden; color: var(--on-dark); }
+.bg-photo::before { content: ""; position: absolute; inset: 0; z-index: -2; background: url("bg-queue.jpg") center 62% / cover no-repeat; }
+.bg-photo::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(7,18,34,.86) 0%, rgba(7,18,34,.62) 45%, rgba(7,18,34,.25) 100%); }
+.bg-photo .sec-head h2 { color: #fff; }
+.bg-photo .label { color: var(--sun); }
+.bg-photo .bg-grid h3 { color: #a8bfe0; }
+.bg-photo .list b { color: #fff; }
+.bg-photo .list span { color: #c3d2e6; }
+.bg-photo .list a { color: #fff; }
+.bg-photo .photo-credit { margin-top: 2.5rem; font-size: .8rem; color: #a8bfe0; }
 /* Background */
 .bg-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem; }
 .bg-grid h3 { font-family: var(--sans); font-size: .75rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
@@ -728,7 +739,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
     </div>
   </section>
 
-  <section class="band" id="background">
+  <section class="band bg-photo" id="background">
     <div class="wrap">
       <div class="sec-head">
         <span class="label">Background</span>
@@ -763,6 +774,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
           </ul>
         </div>
       </div>
+      <p class="photo-credit">Photo: people queueing outside a Home Affairs mobile office at sunset.</p>
     </div>
   </section>
 </main>
