@@ -169,7 +169,9 @@ p { margin: 0; }
 .md { font-size: .85rem; color: var(--muted); }
 
 /* About */
-.about { background: var(--mist); }
+.about { background: var(--mist); position: relative; isolation: isolate; overflow: hidden; }
+.about::before { content: ""; position: absolute; inset: 0; z-index: -2; background: url("about-tree.jpg") center top / cover no-repeat; }
+.about::after { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--mist); opacity: .8; }
 .about .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: clamp(2rem, 6vw, 6rem); align-items: start; }
 .about .sec-head { margin: 0; position: sticky; top: 7rem; }
 .about .body { display: grid; gap: 1.2rem; font-size: 1.125rem; max-width: 38rem; }
