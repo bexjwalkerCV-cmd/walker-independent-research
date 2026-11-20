@@ -189,8 +189,13 @@ p { margin: 0; }
 .cv-callout p { color: var(--text); font-size: 1rem; max-width: 38rem; }
 
 /* Services */
+.teach-stage { position: relative; isolation: isolate; overflow: hidden; padding: clamp(1.5rem, 4vw, 3rem); align-items: start; }
+.teach-stage .svc-bg img { object-position: center 52%; }
+.teach-stage > .label { color: var(--sun); }
+.teach-stage .courses li { background: var(--surface); border-top: 0; border-right: 0; border-bottom: 0; box-shadow: 0 12px 30px -14px rgba(0,0,0,.55); }
+
 .svc-stage { position: relative; isolation: isolate; padding: clamp(1.5rem, 4vw, 3rem); overflow: hidden; }
-.svc-bg { position: absolute; inset: 0; z-index: -1; display: grid; grid-template-columns: 1fr 1.3fr; }
+.svc-bg { position: absolute; inset: 0; z-index: -1; display: grid; }
 .svc-bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .svc-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,37,69,.78) 0%, rgba(11,37,69,.45) 30%, rgba(11,37,69,.35) 100%); }
 .svc-stage .sec-head h2 { color: #fff; }
@@ -335,7 +340,6 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
   .book-cover { width: 8rem; }
   .covers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .courses { grid-template-columns: minmax(0, 1fr); }
-  .svc-bg { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
   .svc-stage { margin-inline: 0; }
   .pc { min-height: 14rem; }
   .mosaic { margin-left: 18px; }
@@ -498,7 +502,7 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
     <div class="wrap">
       <figure class="notes"><img src="notes.jpg" alt="Coloured pens on open notebooks and large sheets of handwritten workshop notes spread across a wooden table" width="1400" height="349" loading="lazy"></figure>
       <div class="svc-stage">
-        <div class="svc-bg" aria-hidden="true"><img src="svc-workshop.jpg" alt="" loading="lazy"><img src="svc-quilt.jpg" alt="" loading="lazy"></div>
+        <div class="svc-bg" aria-hidden="true"><img src="svc-quilt.jpg" alt="" loading="lazy"></div>
         <div class="sec-head">
         <span class="label">Services</span>
         <h2>What I do</h2>
@@ -530,7 +534,8 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
         </div>
       </div>
       </div>
-      <div class="expertise" id="teaching">
+      <div class="expertise teach-stage" id="teaching">
+        <div class="svc-bg" aria-hidden="true"><img src="svc-workshop.jpg" alt="" loading="lazy"></div>
         <span class="label">Teaching</span>
         <ul class="courses">
           <li><b>Displacement, Healthcare and Humanitarian Action (RPM 280)</b><span>MA Refugee Protection and Forced Migration Studies, Refugee Law Initiative, University of London · Tutor, current</span></li>
