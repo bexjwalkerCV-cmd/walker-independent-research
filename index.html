@@ -107,20 +107,12 @@ p { margin: 0; }
 .btn:hover { border-color: var(--cobalt); background: var(--cobalt); color: #fff; }
 .mosaic { margin: 0; position: relative; z-index: 0; }
 .mosaic::before { content: ""; position: absolute; inset: -18px 22px 44px -18px; background: var(--cobalt); z-index: -1; }
-.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; background: #0b2545; padding: 6px; box-shadow: 0 30px 60px -20px rgba(11,37,69,.45); }
-.tile { position: relative; aspect-ratio: 1; overflow: hidden; background: #0b2545; min-width: 0; }
-.tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; }
-.tile img:first-child { opacity: 1; }
-@media (prefers-reduced-motion: no-preference) {
-  .tile img { animation: tilefade 18s infinite; }
-  .tile img:nth-child(1) { animation-delay: var(--d, 0s); }
-  .tile img:nth-child(2) { animation-delay: calc(var(--d, 0s) - 12s); }
-  .tile img:nth-child(3) { animation-delay: calc(var(--d, 0s) - 6s); }
-  .tile.d1 { --d: -1.5s; } .tile.d2 { --d: -3s; } .tile.d3 { --d: -4.5s; }
-  .tile img { will-change: opacity, transform; }
-}
-@keyframes tilefade { 0% { opacity: 1; transform: scale(1); } 30% { opacity: 1; } 36% { opacity: 0; transform: scale(1.06); } 94% { opacity: 0; transform: scale(1); } 100% { opacity: 1; } }
-.tiles .t-wide { grid-column: 1 / -1; aspect-ratio: 1600 / 932; }
+.tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: repeat(4, minmax(0, 1fr)); aspect-ratio: 1; max-width: 100%; gap: 6px; background: #0b2545; padding: 6px; box-shadow: 0 30px 60px -20px rgba(11,37,69,.45); }
+.tile { position: relative; overflow: hidden; background: #0b2545; min-width: 0; min-height: 0; }
+.tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.tile.big { grid-column: 1 / 4; grid-row: 1 / 3; }
+.tile.tall { grid-column: 4; grid-row: 1 / 3; }
+.tile.wide { grid-column: span 2; }
 .mosaic figcaption { font-size: .8rem; color: var(--muted); margin-top: .9rem; text-align: right; }
 .creds { border-top: 1px solid var(--rule); }
 .creds .wrap { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; padding-block: 1.6rem; }
@@ -440,28 +432,17 @@ footer .wrap { padding-block: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem
       </div>
       <figure class="mosaic">
         <div class="tiles">
-          <div class="tile t-wide d0">
-            <img src="art-panels.jpg" alt="Group textile quilt from the Mwangaza Mama project">
-            <img src="albert-street.jpg" alt="80 Albert Street, Johannesburg, in black and white" loading="lazy">
-            <img src="svc-quilt.jpg" alt="Red textile collage with handwritten stories stitched on" loading="lazy">
-          </div>
-          <div class="tile d1">
-            <img src="art-quilt.jpg" alt="Mwangaza Mama title quilt">
-            <img src="wb-dress1.jpg" alt="Sculpted dress from the Wardrobe Project" loading="lazy">
-            <img src="art-becky.jpg" alt="Purple collage panel with Becky stitched above it" loading="lazy">
-          </div>
-          <div class="tile d2">
-            <img src="art-beads.jpg" alt="Beads and pom-poms on a red collage">
-            <img src="svc-workshop.jpg" alt="Hands drawing with oil pastels on brown paper in a workshop" loading="lazy">
-            <img src="wb-dress2.jpg" alt="Sculpted dress with a white feathered bodice" loading="lazy">
-          </div>
-          <div class="tile d3">
-            <img src="art-girl.jpg" alt="Stitched figure of a girl in a sequinned dress">
-            <img src="art-words.jpg" alt="Handwritten panel: In the city we have no power" loading="lazy">
-            <img src="wb-dress3.jpg" alt="Sculpted dress in grey and silver over red" loading="lazy">
-          </div>
+          <div class="tile big"><img src="art-panels.jpg" alt="Group textile quilt with six collage panels from the Mwangaza Mama project"></div>
+          <div class="tile tall"><img src="wb-dress1.jpg" alt="Sculpted dress from the Wardrobe Project, with handwritten words on the bodice and a purple skirt" style="object-position:center 30%"></div>
+          <div class="tile"><img src="art-quilt.jpg" alt="Mwangaza Mama title quilt"></div>
+          <div class="tile"><img src="art-girl.jpg" alt="Stitched figure of a girl in a sequinned dress"></div>
+          <div class="tile"><img src="art-beads.jpg" alt="Beads and pom-poms on a red collage"></div>
+          <div class="tile"><img src="art-houses.jpg" alt="Collage of houses in fabric"></div>
+          <div class="tile wide"><img src="art-becky.jpg" alt="Purple collage panel with a name stitched above it"></div>
+          <div class="tile"><img src="art-figures.jpg" alt="Fabric collage of figures"></div>
+          <div class="tile"><img src="art-words.jpg" alt="Handwritten panel: In the city we have no power"></div>
         </div>
-        <figcaption>From my work: Mwangaza Mama, the Wardrobe Project and 80 Albert Street · <a href="#creative">Creative methods</a></figcaption>
+        <figcaption>Artwork from Mwangaza Mama and the Wardrobe Project · <a href="#creative">Creative methods</a></figcaption>
       </figure>
     </div>
     <div class="creds">
